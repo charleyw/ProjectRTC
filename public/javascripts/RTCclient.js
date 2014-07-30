@@ -6,7 +6,7 @@ function RTCconnection(id, parent) {
   this.remoteVideoEl = document.createElement('video');
   
   this.handleMessage = function (message) {
-    console.log('receiving ' + message.type + ' from ' + message.from);
+//    console.log('receiving ' + message.type + ' from ' + message.from);
     switch (message.type) {
     case 'offer':
         this.pc.addStream(parent.localStream);
