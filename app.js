@@ -27,10 +27,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/clients', routes.index);
 app.get('/streams', routes.streams);
 //app.get('/:id', routes.watch);
-app.get('/home', routes.home);
+app.get('/', routes.home);
 
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
@@ -61,7 +61,7 @@ io.sockets.on('connection', function(client) {
   client.on('readyToStream', function(name) {
     console.log('-- ' + client.id + ' is ready to stream --');
     var stream = new Stream(name);
-    routes.addStream(client.id, stream); 
+    routes.addStream(client.id, stream);
   });
   
   client.on('rate', function(rating) {
