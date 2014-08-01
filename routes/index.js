@@ -28,7 +28,7 @@ exports.rename = function(id, name) {
 };
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Project RTC', 
+  res.render('index', { title: 'Project RTC',
                         header: 'Web RTC live streaming',
                         footer: ''
                       });
@@ -41,3 +41,13 @@ exports.streams = function(req, res) {
 exports.watch = function(req,res) {
   res.render('watch', { id: req.params.id});
 };
+
+exports.home = function(req,res) {
+    res.render('home', {id: getStreamIdByName('x-robot')});
+};
+
+function getStreamIdByName(name){
+    for(var key in streamList) {
+        if (streamList[key].name === name) {return key}
+    }
+}
